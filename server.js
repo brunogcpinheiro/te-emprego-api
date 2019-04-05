@@ -1,13 +1,13 @@
-const express = require("express");
-const app = express();
+require("dotenv").config();
+require("module-alias/register");
 
-app.get("/", (req, res) => {
-    return res.send("Hello, World");
-});
+const config = require("@config");
+const app = require("@app");
 
-app.listen(process.env.PORT || 3000, err => {
-    if (err) console.log("Erro...")
+
+app.listen(config.app.port, err => {
+    if (err) console.log("Erro...");
     
-    console.log("Running...")
+    console.log(`Running on port ${config.app.port}`);
 });
 
